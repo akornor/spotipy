@@ -400,7 +400,7 @@ class Spotify(object):
                          market=market)
 
 
-    def user_playlist_create(self, user, name, public=True, description=''):
+    def user_playlist_create(self, user, name, public=True, description='', collaborative=False):
         """ Creates a playlist for a user
 
             Parameters:
@@ -408,8 +408,9 @@ class Spotify(object):
                 - name - the name of the playlist
                 - public - is the created playlist public
                 - description - the description of the playlist
+                - collaborative - is the created playlist collaborative
         """
-        data = {'name': name, 'public': public, 'description': description}
+        data = {'name': name, 'public': public, 'description': description, 'collaborative': collaborative}
 
 
         return self._post("users/%s/playlists" % (user,), payload=data)
